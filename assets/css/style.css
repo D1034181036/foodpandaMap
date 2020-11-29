@@ -1,0 +1,25 @@
+html,body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map{
+    border: 2px solid #444;
+	position: relative;
+	left: 1%;
+	top: 1%;
+	width: 98%;
+	height: 40%;
+	bottom: 2%;
+}
+
+#info{
+    border: 2px solid #444;
+	position: relative;
+	left: 1%;
+	top: 5%;
+	width: 98%;
+	height: 50%;
+	overflow-y: scroll;
+}
