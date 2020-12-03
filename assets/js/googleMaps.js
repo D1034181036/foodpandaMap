@@ -19,7 +19,7 @@ function initMarkers(initPos){
 	    if (this.readyState == 4 && this.status == 200) {
 	        var jsonData = JSON.parse(this.responseText);
 	        var data = getItems(jsonData);
-	        setMarkers(data["items"]); //.slice(0, 100)
+	        setMarkers(data["availableItems"]); //.slice(0, 100)
 	        //console.log("item: " + data["items"].length + "\navailableItems: " + data["availableItems"].length + "\nunavailableItems: " + data["unavailableItems"].length);
 	    }
 	};
