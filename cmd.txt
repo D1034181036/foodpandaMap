@@ -1,0 +1,4 @@
+git add .
+git commit -m "update"
+git remote add origin https://github.com/D1034181036/kevin.github.io.git
+git push -u origin master
