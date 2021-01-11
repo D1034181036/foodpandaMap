@@ -39,14 +39,16 @@ function setMarkers(items){
         marker[i] = new google.maps.Marker({
             position: items[i],
             map: map,
+            visible: false,
             icon: createMarkerIcon(items[i]["showTitle"], {bgColor: items[i]["bgColor"]})
         });
 
         infoWindow[i] = new google.maps.InfoWindow({
-		    content: "地址: " + items[i]["address"] + "<br>" +
+		    content: "店名: " + items[i]["showTitle"] + "<br>" +
+		    		 "地址: " + items[i]["address"] + "<br>" +
 		    		 "距離: " + items[i]["distance"] + "<br>" +		    		
 		    		 "最短送餐時間: " + items[i]["minimum_delivery_time"] + " 分鐘<br>" +
-		    		 "點餐網址: <a href='" + items[i]["redirection_url"] + "'> 按我點餐 </a><br>"
+		    		 "點餐網址: <a href='" + items[i]["redirection_url"] + "' target='_blank'> 按我點餐 </a><br>"
 		});
 
         marker[i].addListener("click", function() {infoWindow[i].open(map, marker[i]);});
@@ -57,6 +59,11 @@ function setMarkers(items){
 
         google.maps.event.addDomListener(info_div[i], "click", () => {
 		    infoWindow[i].open(map, marker[i]);
+		    marker[i].setVisible(true);
+		});
+
+		google.maps.event.addDomListener(infoWindow[i],'closeclick', () => {
+		   	//marker[i].setVisible(false);
 		});
 	}
 	console.log(items[0]);
