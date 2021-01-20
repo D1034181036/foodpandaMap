@@ -1,13 +1,13 @@
 function initMap(){
-    var initPos = { lat: 25.0581408, lng: 121.6665558 };
+    var initPos = { lat: lat, lng: lng };
     map = new google.maps.Map(document.getElementById("map"), {
         center: initPos,
         zoom: 18,
     });
-    initMarkers(initPos);
+    initMarkers(initPos, displayItem);
 }
 
-function initMarkers(initPos){
+function initMarkers(initPos, displayItem){
 	var requestUrl = "https://disco.deliveryhero.io/listing/api/v1/pandora/vendors?latitude="+initPos.lat+"&longitude="+initPos.lng+"&language_id=6&include=characteristics&new_sorting=true&dynamic_pricing=0&configuration=Original&country=tw&customer_id=&customer_hash=&budgets=&cuisine=&food_characteristic=&vertical=restaurants&customer_type=regular";
 	
 	xmlhttp = new XMLHttpRequest();
@@ -19,7 +19,7 @@ function initMarkers(initPos){
 	    if (this.readyState == 4 && this.status == 200) {
 	        var jsonData = JSON.parse(this.responseText);
 	        var data = getItems(jsonData);
-	        setMarkers(data["availableItems"]); //.slice(0, 100)
+	        setMarkers(data[displayItem]); //.slice(0, 100)
 	        //console.log("item: " + data["items"].length + "\navailableItems: " + data["availableItems"].length + "\nunavailableItems: " + data["unavailableItems"].length);
 	    }
 	};
@@ -100,4 +100,18 @@ function addInfoTab(obj, id, text) {
 	aTag.setAttribute("data-toggle", "list");
 	parent.appendChild(aTag);
 	return aTag;
+}
+
+
+var lat = 25.0581408;
+var lng = 121.6665558;
+ 
+function setLatLng(lat,lng){
+  	this.lat = lat;
+  	this.lng = lng;
+}
+
+var displayItem = "";
+function setDisplayItems(displayItem){
+  	this.displayItem = displayItem;
 }
