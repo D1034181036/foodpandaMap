@@ -2,8 +2,9 @@ function initMap(){
     var initPos = { lat: lat, lng: lng };
     map = new google.maps.Map(document.getElementById("map"), {
         center: initPos,
-        zoom: 18,
+        zoom: 16,
     });
+    setInitPosMarker(initPos);
     initMarkers(initPos, displayItem);
 }
 
@@ -114,4 +115,11 @@ function setLatLng(lat,lng){
 var displayItem = "";
 function setDisplayItems(displayItem){
   	this.displayItem = displayItem;
+}
+
+function setInitPosMarker(initPos){
+    marker = new google.maps.Marker({
+        position: initPos,
+        map: map
+    });
 }
