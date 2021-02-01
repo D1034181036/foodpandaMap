@@ -1,18 +1,19 @@
 html,body{
 	height: 100%;
+	background-color: #fcf8e8;
 }
 
 #map{
-	height: 400px;
+	height: 300px;
 	border: 2px solid #444;
-	margin: 1%;
+	margin: 2%;
 }
 
 #info{
 	height: 250px;
 	overflow-y: scroll;
 	border: 2px solid #444;
-	margin: 1%;
+	margin: 4% 2% 2% 2%;
 }
 
 .container {
@@ -27,8 +28,8 @@ html,body{
 	}
 }
 
-@media (min-height: 750px){
+@media (min-height: 650px){
 	#info{
-		height: 350px;
+		height: 50%;
 	}
 }
