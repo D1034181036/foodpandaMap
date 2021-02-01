@@ -1,31 +1,34 @@
 html,body{
-    height: 100%;
-    margin: auto;
-    padding: 0;
-}
-
-@media (min-width: 700px){
-   html,body{
-	    width: 700px;
-	}
+	height: 100%;
 }
 
 #map{
-    border: 2px solid #444;
-	position: relative;
-	left: 1%;
-	top: 1%;
-	width: 98%;
 	height: 400px;
-	bottom: 2%;
+	border: 2px solid #444;
+	margin: 1%;
 }
 
 #info{
-    border: 2px solid #444;
-	position: relative;
-	left: 1%;
-	top: 5%;
-	width: 98%;
 	height: 250px;
 	overflow-y: scroll;
+	border: 2px solid #444;
+	margin: 1%;
+}
+
+.container {
+	height: 100%;
+}
+
+/*=== media query順序在下面 ===*/
+
+@media (min-width: 700px){
+	.container{
+		width: 700px;
+	}
+}
+
+@media (min-height: 750px){
+	#info{
+		height: 350px;
+	}
 }

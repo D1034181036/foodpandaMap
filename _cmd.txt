@@ -2,4 +2,4 @@ git add .
 git commit -m "update"
 git push -u origin master
 
-//git remote add origin https://github.com/D1034181036/food.git
+git remote add origin https://github.com/D1034181036/foodpandaMap.git
