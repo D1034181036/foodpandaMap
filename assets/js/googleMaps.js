@@ -2,7 +2,7 @@ function initMap(){
     var initPos = { lat: lat, lng: lng };
     map = new google.maps.Map(document.getElementById("map"), {
         center: initPos,
-        zoom: 16,
+        zoom: 17,
     });
     setInitPosMarker(initPos);
     initMarkers(initPos, displayItem);
@@ -26,11 +26,11 @@ function initMarkers(initPos, displayItem){
 	};
 }
 
+var marker = {};
+var infoWindow = {};
+var info_div = {};
+var numItems;
 function setMarkers(items){
-	var marker = {};
-    var infoWindow = {};
-    var info_div = {};
-
 	for(let i = 0; i<items.length; i++){
 		items[i]["lat"] = items[i]["latitude"];  //for google maps
         items[i]["lng"] = items[i]["longitude"]; //for google maps
@@ -67,6 +67,7 @@ function setMarkers(items){
 		   	//marker[i].setVisible(false);
 		});
 	}
+	numItems = items.length;
 	console.log(items[0]);
 }
 
@@ -118,8 +119,28 @@ function setDisplayItems(displayItem){
 }
 
 function setInitPosMarker(initPos){
-    marker = new google.maps.Marker({
+    markerInit = new google.maps.Marker({
         position: initPos,
         map: map
     });
+}
+
+var displayStatus = false;
+function displayAll(){
+	displayStatus = !displayStatus;
+	for(let i = 0; i<numItems; i++){
+		marker[i].setVisible(displayStatus);
+	}
+	
+	var element = document.getElementById("displayButton");
+
+	if(displayStatus){
+		element.classList.remove("btn-primary");
+		element.classList.add("btn-danger");
+	}else{
+		element.classList.remove("btn-danger");
+		element.classList.add("btn-primary");
+	}
+	element.innerText = displayStatus ? "隱藏全部" : "顯示全部";
+	
 }

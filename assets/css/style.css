@@ -20,6 +20,11 @@ html,body{
 	height: 100%;
 }
 
+#displayButton {
+	position: absolute;
+	z-index: 100;
+}
+
 /*=== media query順序在下面 ===*/
 
 @media (min-width: 700px){
@@ -28,8 +33,42 @@ html,body{
 	}
 }
 
-@media (min-height: 650px){
+@media (min-height: 700px){
 	#info{
-		height: 50%;
+		height: 300px;
+	}
+
+	#map{
+		height: 350px;
+	}
+}
+
+@media (min-height: 800px){
+	#info{
+		height: 350px;
+	}
+
+	#map{
+		height: 400px;
+	}
+}
+
+@media (min-height: 900px){
+	#info{
+		height: 400px;
+	}
+
+	#map{
+		height: 450px;
+	}
+}
+
+@media (min-height: 1000px){
+	#info{
+		height: 400px;
+	}
+
+	#map{
+		height: 550px;
 	}
 }
