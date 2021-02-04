@@ -30,6 +30,7 @@ var marker = {};
 var infoWindow = {};
 var info_div = {};
 var numItems;
+
 function setMarkers(items){
 	for(let i = 0; i<items.length; i++){
 		items[i]["lat"] = items[i]["latitude"];  //for google maps
@@ -121,7 +122,8 @@ function setDisplayItems(displayItem){
 function setInitPosMarker(initPos){
     markerInit = new google.maps.Marker({
         position: initPos,
-        map: map
+        map: map,
+        icon: createMarkerIcon("汐止區公所", {bgColor: "blue"})
     });
 }
 
