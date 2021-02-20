@@ -6,10 +6,11 @@ var lat;
 var lng;
 var displayItem = "";
 var displayStatus = false;
+var addressInput = "汐止區公所"
 
 function setupNewAddress(){
 	alert("API不穩定可能需要等待數秒...\n或是多嘗試幾次...")
-	var addressInput = document.getElementById("addressInput").value;
+	addressInput = document.getElementById("addressInput").value;
 	var requestUrl = "http://api.positionstack.com/v1/forward?access_key=9aacd120693af1acf603d08518359b7e&query="+addressInput;
 	
 	xmlhttp = new XMLHttpRequest();
@@ -156,7 +157,7 @@ function setInitPosMarker(initPos){
     markerInit = new google.maps.Marker({
         position: initPos,
         map: map,
-        icon: createMarkerIcon(document.getElementById("addressInput").value, {bgColor: "blue"})
+        icon: createMarkerIcon(addressInput, {bgColor: "blue"})
     });
 }
 
