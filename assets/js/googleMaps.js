@@ -1,3 +1,46 @@
+var marker = [];
+var infoWindow = {};
+var info_div = {};
+var numItems = 0;
+var lat;
+var lng;
+var displayItem = "";
+var displayStatus = false;
+
+function setupNewAddress(){
+	alert("API不穩定可能需要等待數秒...\n或是多嘗試幾次...")
+	var addressInput = document.getElementById("addressInput").value;
+	var requestUrl = "http://api.positionstack.com/v1/forward?access_key=9aacd120693af1acf603d08518359b7e&query="+addressInput;
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", requestUrl, true);
+	xmlhttp.send();
+
+	//console.log(requestUrl);
+	xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	var addressData = JSON.parse(xmlhttp.responseText);
+	    	lat = addressData["data"][0]["latitude"];
+			lng = addressData["data"][0]["longitude"];
+			resetAll();
+			initMap();
+	    }
+	};
+}
+
+function resetAll(){
+	if(displayStatus) displayAll();
+	for (var i = 0; i < marker.length; i++) {
+	    marker[i].setMap(null);
+	}
+	marker = [];
+	infoWindow = {};
+	info_div = {};
+	numItems = 0;
+	displayStatus = false;
+	document.getElementById("info").innerHTML = "";
+}
+
 function initMap(){
     var initPos = { lat: lat, lng: lng };
     map = new google.maps.Map(document.getElementById("map"), {
@@ -25,11 +68,6 @@ function initMarkers(initPos, displayItem){
 	    }
 	};
 }
-
-var marker = {};
-var infoWindow = {};
-var info_div = {};
-var numItems;
 
 function setMarkers(items){
 	for(let i = 0; i<items.length; i++){
@@ -105,16 +143,11 @@ function addInfoTab(obj, id, text) {
 	return aTag;
 }
 
-
-var lat = 25.0581408;
-var lng = 121.6665558;
- 
 function setLatLng(lat,lng){
   	this.lat = lat;
   	this.lng = lng;
 }
 
-var displayItem = "";
 function setDisplayItems(displayItem){
   	this.displayItem = displayItem;
 }
@@ -123,11 +156,10 @@ function setInitPosMarker(initPos){
     markerInit = new google.maps.Marker({
         position: initPos,
         map: map,
-        icon: createMarkerIcon("汐止區公所", {bgColor: "blue"})
+        icon: createMarkerIcon(document.getElementById("addressInput").value, {bgColor: "blue"})
     });
 }
 
-var displayStatus = false;
 function displayAll(){
 	displayStatus = !displayStatus;
 	for(let i = 0; i<numItems; i++){
