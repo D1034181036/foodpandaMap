@@ -9,6 +9,8 @@
 # Online Demo
 
 https://d1034181036.github.io/foodpandaMap/
+https://d1034181036.github.io/foodpandaMap/all.html
+https://d1034181036.github.io/foodpandaMap/search.html
 
 # Preview
 
