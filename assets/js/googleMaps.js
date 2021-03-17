@@ -177,5 +177,4 @@ function displayAll(){
 		element.classList.add("btn-primary");
 	}
 	element.innerText = displayStatus ? "隱藏全部" : "顯示全部";
-	
 }
