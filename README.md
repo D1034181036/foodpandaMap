@@ -8,14 +8,11 @@
 
 # Online Demo (Main)
 
+#### 僅顯示當前有營業的店家:  
 https://d1034181036.github.io/foodpandaMap/  
 
-# Online Demo (Others)
-
 #### 包含未營業的店家: 
-https://d1034181036.github.io/foodpandaMap/all.html  
-#### 簡易搜尋功能: 
-https://d1034181036.github.io/foodpandaMap/search.html  
+https://d1034181036.github.io/foodpandaMap/all.html   
 
 # Preview
 
