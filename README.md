@@ -2,7 +2,7 @@
 
 視覺化FoodPanda地圖，當兵時寫的，用來找中午吃飯的店家 :)  
 
-純前端靜態網頁，使用JS即時抓資料。
+純前端靜態網頁，使用JavaScript即時抓資料。
 
 # Online Demo
 
