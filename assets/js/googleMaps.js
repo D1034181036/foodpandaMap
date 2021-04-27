@@ -4,30 +4,9 @@ var info_div = {};
 var numItems = 0;
 var lat;
 var lng;
+var initMarkerName = "";
 var displayItem = "";
 var displayStatus = false;
-var addressInput = "汐止區公所"
-
-function setupNewAddress(){
-	alert("API不穩定可能需要等待數秒...\n或是多嘗試幾次...")
-	addressInput = document.getElementById("addressInput").value;
-	var requestUrl = "http://api.positionstack.com/v1/forward?access_key=9aacd120693af1acf603d08518359b7e&query="+addressInput;
-	
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", requestUrl, true);
-	xmlhttp.send();
-
-	//console.log(requestUrl);
-	xmlhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
-	    	var addressData = JSON.parse(xmlhttp.responseText);
-	    	lat = addressData["data"][0]["latitude"];
-			lng = addressData["data"][0]["longitude"];
-			resetAll();
-			initMap();
-	    }
-	};
-}
 
 function resetAll(){
 	if(displayStatus) displayAll();
@@ -144,12 +123,10 @@ function addInfoTab(obj, id, text) {
 	return aTag;
 }
 
-function setLatLng(lat,lng){
+function setConfig(lat,lng, initMarkerName, displayItem){
   	this.lat = lat;
   	this.lng = lng;
-}
-
-function setDisplayItems(displayItem){
+  	this.initMarkerName = initMarkerName;
   	this.displayItem = displayItem;
 }
 
@@ -157,7 +134,7 @@ function setInitPosMarker(initPos){
     markerInit = new google.maps.Marker({
         position: initPos,
         map: map,
-        icon: createMarkerIcon(addressInput, {bgColor: "blue"})
+        icon: createMarkerIcon(initMarkerName, {bgColor: "blue"})
     });
 }
 
